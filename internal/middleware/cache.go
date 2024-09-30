@@ -229,7 +229,7 @@ func (responseWriterWarp *ResponseWriterWarp) Write(data []byte) (int, error) {
 
 // 返回缓存数据
 func responseWithCache(ctx *gin.Context, cacheData *ResponseCacheData) {
-	//ctx.Status(cacheData.StatusCode)            // 设置响应码
+	ctx.Status(cacheData.StatusCode)            // 设置响应码
 	for key, values := range cacheData.Header { // 设置响应头
 		for _, value := range values {
 			ctx.Writer.Header().Add(key, value)
